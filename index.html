@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beautiful on Earth</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body, html {
+        /* height: 100%;
+        margin: 0; */
+        display: flex;
+        align-items: center; /* Centers content vertically */
+        justify-content: center; /* Centers content horizontally */
+        background-image: url('image5.jpg'); 
+        
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+    }
+    #imageDisplay {
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    .container {
+        text-align: center; /* Ensures the buttons and image are centered */
+        padding: 20px;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 100%; /* Sets a max width for the container */
+    }
+    #startButton {
+        position: absolute; /* Positions the start button in the center initially */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px; /* Larger font size */
+        padding: 15px 30px; /* Larger padding for bigger button size */
+        width: auto; /* Adjust width as needed */
+
+
+        
+    }
+    #nextButton {
+        display: none; /* Keeps next button hidden until it is needed */
+        background-color: #363e80; /* Green color for next button */
+        
+        position:absolute;
+        left: 50%;
+        font-size: 20px;
+        padding: 15px 30px;
+    }
+</style>
+<script>
+    function startShow() {
+        document.getElementById('startButton').style.display = 'none'; // Hide start button
+        document.getElementById('nextButton').style.display = 'block'; // Show next button
+        document.getElementById('imageDisplay').style.display = 'block'; // Show image display
+        document.getElementById('imageDisplay').src = 'image1.png'; // Load first image
+        document.getElementById('nextButton').innerText = 'More Beautiful'; // Set text of next button
+        document.getElementById('nextButton').setAttribute('onclick', 'showNextImage("More Beautiful")'); // Set onclick of next button
+    }
+
+    function showNextImage(resolution) {
+        let nextResolution;
+        switch (resolution) {
+            case 'More Beautiful':
+                document.getElementById('imageDisplay').src = 'image2.png';
+                nextResolution = 'More and More Beautiful';
+                break;
+            case 'More and More Beautiful':
+                document.getElementById('imageDisplay').src = 'image3.png';
+                nextResolution = 'Most Beautiful';
+                break;
+            case 'Most Beautiful':
+                document.getElementById('imageDisplay').src = 'image4.jpg';
+                document.getElementById('nextButton').style.display = 'none'; // Hide next button
+                document.body.style.backgroundImage = "url('image0.jpg')"; // Change background image
+                return;
+        }
+        document.getElementById('nextButton').innerText = nextResolution; // Update button text
+        document.getElementById('nextButton').setAttribute('onclick', 'showNextImage("' + nextResolution + '")'); // Update button onclick
+    }
+</script>
+</head>
+<body>
+
+<div class="container">
+    <img id="imageDisplay" src="" class="img-fluid mt-3">
+    <button id="startButton" class="btn btn-primary" onclick="startShow()">Most Beautiful on Earth</button>
+    <button id="nextButton" class="btn btn-secondary"></button>
+</div>
+
+</body>
+</html>
